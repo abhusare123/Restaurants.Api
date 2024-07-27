@@ -1,5 +1,6 @@
 using Application.Extensions;
 using Infrastructure.Extensions;
+using Infrastructure.Seeders;
 using Restaurants.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,10 @@ builder.Services.AddScoped<ErrorHandlingMiddleWare>();
 // Add services to the container.
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
+await seeder.Seed();
 
 // Configure the HTTP request pipeline.
 

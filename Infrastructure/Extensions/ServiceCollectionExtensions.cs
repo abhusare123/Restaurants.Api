@@ -12,9 +12,8 @@ namespace Infrastructure.Extensions
     {
         public static void AddInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<DbContext, RestaurantsDbContext>();
             var connectionString = configuration.GetConnectionString("RestaurantsDb");
-            services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<RestaurantsDbContext>(options => options.UseInMemoryDatabase(connectionString));
 
             services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
             services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
