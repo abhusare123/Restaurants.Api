@@ -1,4 +1,6 @@
-﻿using Infrastructure.Persistence;
+﻿using Application.Interfaces.Repositories;
+using Infrastructure.Persistence;
+using Infrastructure.Repositories;
 using Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +19,7 @@ namespace Infrastructure.Extensions
 
             services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
             services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
+            services.AddScoped<IDishesRepository, DishesRepository>();
         }
     }
 }
