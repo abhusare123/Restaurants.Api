@@ -3,6 +3,7 @@ using Application.Restaurants.Commands.DeleteRestaurant;
 using Application.Restaurants.Commands.UpdateRestaurant;
 using Application.Restaurants.Queries.GetRestaurantById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Api.Application.Restaurants.Dtos;
 using Restaurants.Api.Application.Restaurants.Queries.GetAllRestaurants;
@@ -11,6 +12,7 @@ namespace Restaurants.Api.Controllers
 {
     [Route("api/restaurants")]
     [ApiController]
+    [Authorize]
     public class RestaurantsController(IMediator mediator) : ControllerBase
     {
         [HttpGet]

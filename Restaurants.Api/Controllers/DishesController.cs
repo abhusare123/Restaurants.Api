@@ -2,6 +2,7 @@
 using Application.Dishes.Dtos;
 using Application.Dishes.Queries.GetByIdForRestaurnt;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Api.Controllers;
 
@@ -9,6 +10,7 @@ namespace Restaurants.Api.Controllers
 {
     [Route("api/restaurants/{restaurantId}/dishes")]
     [ApiController]
+    [Authorize]
     public class DishesController(IMediator mediator) : ControllerBase
     {
         [HttpPost]
